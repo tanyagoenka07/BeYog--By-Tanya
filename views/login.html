@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | BeYog</title>
+    <style>
+        /* General body and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Video background styling */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            /* Make sure the video stays behind the content */
+        }
+
+        /* Header Styling with Logo */
+        header {
+            width: 100%;
+            background-color: rgba(0, 121, 107, 0.8);
+            /* Semi-transparent header */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 30px;
+        }
+
+        /* Container styles for the login form */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Input fields and styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Link text for 'Sign Up' and 'Forgot Password' */
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            color: #45a049;
+        }
+
+        /* Specific styles for Login page */
+        .login-container {
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source
+            src="https://media-hosting.imagekit.io//4e479defa6de4373/4110446-uhd_3840_2160_30fps.mp4?Expires=1734193453&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ICbi1rDiv3LL0xfdNNrnbMMfBnhdsoQ75fW8TyPPaNpFoDkaEVEvk9NhR0sZXT~GXAZKQ3ujnV1NpAWGMen2vp5LJ3k5WQzGicxnBuba6BC1IL4BxANckJDAzt9eF8tb7vgVfGFBT2HpLnP3tBeU8sKEGBzCrg~6W-FBGEjyfGXBNJMNqJfAXYhKr3U1mSS1R4sLr9YbfIVVbWDbrL7IhyZwcTIGlJLcpepEGEdg4x6WP-iz92lJP5H04Tdydu~OG3Pz~gl6hHjiZKblrMLUcEzeOJQr5G-ivF8mJSLsMZLkmbPBExMkPrZf6L-R9mfJlDkuG0pelAQ8PFxVHyxI6w__"
+            type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header with Logo -->
+    <header>
+        <img src="https://i.ibb.co/DwLj8bt/Picsart-24-12-11-17-56-04-309.png" alt="BeYog Logo" class="logo">
+    </header>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <p class="login-link">Don't have an account? <a href="/signup">Sign up here</a>.</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - BeYog</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    body {
+      background-image: url('https://i.ibb.co/GCtYd2n/yoga-background.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 121, 107, 0.8);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      height: 50px;
+      width: 120px;
+      border-radius: 20%;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00796b;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 80px auto 0;
+    }
+
+    .about-company {
+      text-align: center;
+      margin-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 80px auto;
+    }
+
+    .about-company h1 {
+      color: #2c3e50;
+      font-size: 36px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .about-company p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.8;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #777;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card .social-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    .card .social-links a:hover {
+      color: #3498db;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      background-color: #00796b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .card {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header nav {
+        margin-top: 10px;
+      }
+
+      footer {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <a href="/dashboard">
+        <img src="https://i.ibb.co/DwLj8bt/Picsart-24-12-11-17-56-04-309.png" alt="BeYog Logo" class="logo" />
+      </a>
+      <nav>
+        <a href="/dashboard">Home</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/dietplan">DietAI</a>
+        <a href="/membership">Membership</a>
+        <a href="/about">About Us</a>
+        <a href="/logout">Log Out</a>
+      </nav>
+    </header>
+
+    <div class="about-company">
+      <h1>About BeYog</h1>
+      <p>
+        BeYog is a community dedicated to promoting health and wellness through yoga and mindfulness practices.
+        Our experienced instructors and diverse workshops cater to all levels, helping individuals find balance
+        and inner peace. We aim to build a supportive, welcoming environment for everyone to explore their true
+        potential through physical and mental fitness.
+      </p>
+    </div>
+
+    <div class="cards">
+      <!-- You can add instructor cards here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy;  BeYog</p>
+    <p>Address:Manipal University Jaipur, Rajasthan, India</p>
+    <p>Contact Us: <a href="mailto:tanyagoenka2207@gmail.com">contact@beyog.com</a></p>
+  </footer>
+</body>
+
+</html>

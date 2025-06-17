@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan Chatbot</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.ibb.co/GCtYd2n/yoga-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(0, 121, 107, 0.8);
+            /* Added opacity for a transparent header */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            height: 50px;
+            width: 120px;
+            border-radius: 20%;
+            /* Circular logo */
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00796b;
+            text-decoration: wavy;
+        }
+
+
+        /* Main Container Styling */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .chatbot-container {
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .chatbox-header {
+            background-color: #00796b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .chatbox-body {
+            flex: 1;
+            padding: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .chatbox-footer {
+            display: flex;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+
+        .chatbox-footer input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .chatbox-footer button {
+            background-color: #00796b;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chatbox-footer button:hover {
+            background-color: #004d40;
+        }
+
+        .chat-message {
+            margin: 10px 0;
+        }
+
+        .bot-message p {
+            background-color: #004d40;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .user-message p {
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        /* Table of Contents Sidebar */
+        .toc-sidebar {
+            width: 18%;
+            /* Reduced width */
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            right: 0;
+            top: 80px;
+            /* Positioning it below the header */
+            height: calc(100vh - 80px);
+            /* Adjust height to fit below the header */
+            overflow-y: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .toc-sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00796b;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .toc-sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .toc-sidebar ul li h4 {
+            font-size: 18px;
+            color: #00796b;
+            display: block;
+            transition: color 0.3s ease;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toc-sidebar ul li h4:hover {
+            color: #004d40;
+            background-color: #e3f2f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .chatbot-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .toc-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                box-shadow: none;
+                margin-top: 20px;
+                border-radius: 0;
+            }
+
+            header .logo {
+                height: 40px;
+                width: 100px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .instructors-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Navbar -->
+    <header>
+        <a href="/dashboard"><img src="https://i.ibb.co/DwLj8bt/Picsart-24-12-11-17-56-04-309.png" alt="BeYog Logo"
+                class="logo"></a>
+        <nav>
+            <a href="/dashboard">Home</a>
+            <a href="/tutorials">Tutorials</a>
+            <a href="/dietplan">DietAI</a>
+            <a href="/membership">Membership</a>
+            <a href="/about">About Us</a>
+            <a href="/logout">Log Out</a>
+        </nav>
+    </header>
+
+    <!-- Main Container with TOC Sidebar -->
+    <div class="main-container">
+
+        <!-- Chatbot Container -->
+        <div class="chatbot-container">
+            <div class="chatbox">
+                <div class="chatbox-header">
+                    <h3>DietAI Chatbot</h3>
+                </div>
+                <div class="chatbox-body" id="chatbox-body">
+                    <div class="chat-message bot-message">
+                        <p>Hi! I can help you with a personalized diet plan. What are your goals? Just type a plan from
+                            right section.</p>
+                    </div>
+                </div>
+                <div class="chatbox-footer">
+                    <input type="text" id="user-input" placeholder="Type your goal..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table of Contents Sidebar -->
+        <div class="toc-sidebar">
+            <h2>Search Your Plans</h2>
+            <ul>
+                <li>
+                    <h4>Obesity</h4>
+                </li>
+                <li>
+                    <h4>Weight Gain</h4>
+                </li>
+                <li>
+                    <h4>Strength</h4>
+                </li>
+                <li>
+                    <h4>Chronic Diseases</h4>
+                </li>
+                <li>
+                    <h4>Detoxification</h4>
+                </li>
+                <li>
+                    <h4>Stamina</h4>
+                </li>
+                <li>
+                    <h4>Muscle Building</h4>
+                </li>
+                <li>
+                    <h4>Diabetes</h4>
+                </li>
+                <li>
+                    <h4>Clear Skin</h4>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() === "") return;
+
+            // Display user message
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('chat-message', 'user-message');
+            userMessage.innerHTML = `<p>${userInput}</p>`;
+            document.getElementById('chatbox-body').appendChild(userMessage);
+
+            // Process user input
+            setTimeout(() => {
+                const botResponse = generateDietResponse(userInput);
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('chat-message', 'bot-message');
+                botMessage.innerHTML = `<p>${botResponse}</p>`;
+                document.getElementById('chatbox-body').appendChild(botMessage);
+
+                // Scroll to the bottom of the chatbox
+                document.getElementById('chatbox-body').scrollTop = document.getElementById('chatbox-body').scrollHeight;
+            }, 1000);
+
+            // Clear user input
+            document.getElementById('user-input').value = "";
+        }
+
+        function generateDietResponse(input) {
+            const goal = input.toLowerCase();
+
+            if (goal.includes("obesity")) {
+                return `
+                <strong>Diet Plan for Vegetarians (Obesity)</strong><br>
+                <strong>Early Morning:</strong> Warm water with lemon or green tea.<br>
+                5-6 soaked almonds or walnuts.<br><br>
+                <strong>Breakfast:</strong> Vegetable oats porridge or multigrain toast with avocado.<br>
+                A glass of unsweetened almond or soy milk.<br><br>
+                <strong>Mid-Morning Snack:</strong> A bowl of seasonal fruits (avoid bananas and mangoes).<br>
+                Coconut water or buttermilk.<br><br>
+                <strong>Lunch:</strong> 1 cup of brown rice or quinoa with mixed vegetable curry.<br>
+                A side salad with sprouts and a lemon dressing.<br>
+                A small bowl of low-fat curd.<br><br>
+                <strong>Evening Snack:</strong> Roasted chickpeas or a handful of puffed rice (murmura).<br>
+                Herbal tea or green tea.<br><br>
+                <strong>Dinner:</strong> 1-2 multigrain chapatis with stir-fried veggies and lentil soup.<br>
+                A small portion of paneer or tofu.<br><br>
+                <strong>Before Bed:</strong> Warm water with a pinch of cinnamon or a cup of herbal tea.`;
+            } else if (goal.includes("weight gain")) {
+                return `
+                <strong>Diet Plan for Vegetarians (Weight Gain)</strong><br>
+                <strong>Early Morning:</strong> A glass of warm milk with a teaspoon of honey.<br>
+                5-6 soaked almonds and 2 walnuts.<br><br>
+                <strong>Breakfast:</strong> Peanut butter or almond butter on whole-grain toast.<br>
+                A banana smoothie with whole milk and a scoop of protein powder.<br>
+                A handful of mixed seeds (chia, flax, sunflower).<br><br>
+                <strong>Mid-Morning Snack:</strong> A bowl of mixed nuts and dried fruits.<br>
+                A glass of fresh fruit juice (without added sugar).<br><br>
+                <strong>Lunch:</strong> 1-2 multigrain chapatis with paneer or lentil curry.<br>
+                1 cup of brown rice or quinoa with ghee.<br>
+                A bowl of vegetable raita or curd.<br><br>
+                <strong>Evening Snack:</strong> A boiled sweet potato or grilled corn with butter.<br>
+                A cup of masala chai or herbal tea.<br><br>
+                <strong>Dinner:</strong> 1-2 multigrain chapatis with a bowl of dal and vegetable curry.<br>
+                A small portion of paneer or tofu.<br><br>
+                <strong>Before Bed:</strong> A glass of warm milk with turmeric or a handful of nuts.`;
+            } else if (goal.includes("strength")) {
+                return `
+                <strong>Diet Plan for Vegetarians (Strength)</strong><br>
+                <strong>Early Morning:</strong> A glass of warm water with lemon and a pinch of pink salt.<br>
+                5-6 soaked almonds and 2 walnuts.<br><br>
+                <strong>Breakfast:</strong> High-protein smoothie with whole milk, banana, spinach, peanut butter, and a scoop of plant-based protein powder.<br>
+                Oats porridge with chia seeds, nuts, and honey.<br><br>
+                <strong>Mid-Morning Snack:</strong> A handful of roasted chickpeas or fox nuts (makhana).<br>
+                A glass of fresh fruit juice or buttermilk.<br><br>
+                <strong>Lunch:</strong> 1-2 multigrain chapatis with paneer curry or dal.<br>
+                A bowl of quinoa or brown rice with mixed vegetables.<br>
+                A side salad with olive oil dressing.<br><br>
+                <strong>Pre-Workout Snack:</strong> A banana with a handful of mixed nuts.<br>
+                Green tea or black coffee for an energy boost.<br><br>
+                <strong>Post-Workout Snack:</strong> Protein shake with a mix of plant-based protein powder and almond milk.<br>
+                2 boiled potatoes or sweet potatoes.<br><br>
+                <strong>Dinner:</strong> 1-2 multigrain chapatis with a bowl of lentil soup and stir-fried vegetables.<br>
+                A small portion of paneer or tofu.<br><br>
+                <strong>Before Bed:</strong> A glass of warm milk with a pinch of turmeric or a handful of mixed seeds.`;
+            }
+            else if (goal.includes("chronic diseases")) {
+                return `
+            <strong>Diet Plan for Vegetarians (Chronic Diseases)</strong><br>
+            <strong>For Diabetes:</strong><br>
+            Early Morning: Warm water with a teaspoon of fenugreek seeds soaked overnight.<br>
+            5 soaked almonds and 2 walnuts.<br><br>
+            Breakfast: Vegetable oats or moong dal cheela with mint chutney.<br>
+            A cup of unsweetened green tea.<br><br>
+            Mid-Morning Snack: A bowl of fresh cucumber and carrot sticks.<br>
+            Buttermilk without added salt.<br><br>
+            Lunch: 1-2 multigrain chapatis with mixed vegetable curry and dal.<br>
+            A bowl of salad with lemon dressing.<br><br>
+            Evening Snack: A handful of roasted chickpeas or unsalted fox nuts.<br>
+            Herbal tea or green tea.<br><br>
+            Dinner: Stir-fried vegetables with 1 multigrain chapati or a small portion of brown rice.<br>
+            A bowl of curd or raita.<br><br>
+            Before Bed: Warm water with a pinch of cinnamon.`;
+
+            }
+
+            else if (goal.includes("detoxification")) {
+                return `
+            <strong>Diet Plan for Vegetarians (Detoxification)</strong><br>
+            <strong>Early Morning:</strong> Warm water with lemon and a pinch of turmeric.<br>
+            5 soaked almonds or walnuts.<br><br>
+            <strong>Breakfast:</strong> A smoothie made with spinach, banana, almond milk, and chia seeds.<br>
+            A handful of soaked flaxseeds or pumpkin seeds.<br><br>
+            <strong>Mid-Morning Snack:</strong> A glass of fresh coconut water or cucumber juice.<br>
+            A small bowl of seasonal fruits like papaya, watermelon, or pomegranate.<br><br>
+            <strong>Lunch:</strong> A bowl of quinoa salad with mixed greens, cucumbers, and a drizzle of olive oil.<br>
+            A small portion of steamed broccoli or sautéed spinach.<br><br>
+            <strong>Evening Snack:</strong> A handful of roasted fox nuts (makhana) or a cup of herbal tea (like green tea or chamomile).<br><br>
+            <strong>Dinner:</strong> A bowl of vegetable soup (carrot, celery, zucchini) with herbs like parsley or cilantro.<br>
+            1 multigrain chapati with stir-fried vegetables.<br><br>
+            <strong>Before Bed:</strong> A cup of warm water with cinnamon or a detox tea (like ginger and lemon).`;
+            }
+            else if (goal.includes("stamina")) {
+                return `
+            <strong>Diet Plan for Vegetarians (Stamina)</strong><br>
+            <strong>Early Morning:</strong> A glass of warm water with a pinch of lemon and honey.<br>
+            5 soaked almonds and 2 walnuts.<br><br>
+            <strong>Breakfast:</strong> A smoothie with oats, almond milk, banana, spinach, and chia seeds.<br>
+            2 whole-grain toasts with peanut or almond butter.<br><br>
+            <strong>Mid-Morning Snack:</strong> A small bowl of mixed fruits (oranges, papaya, and apples).<br>
+            A glass of coconut water or buttermilk.<br><br>
+            <strong>Lunch:</strong> 1-2 multigrain chapatis with mixed vegetable curry.<br>
+            A bowl of dal (lentils) or chickpea curry.<br>
+            A side salad with cucumber, tomatoes, and olive oil dressing.<br><br>
+            <strong>Pre-Workout Snack:</strong> A banana or boiled sweet potato.<br>
+            A handful of mixed nuts and seeds.<br><br>
+            <strong>Post-Workout Snack:</strong> A glass of protein smoothie with plant-based protein powder, almond milk, and fruits.<br>
+            A bowl of Greek yogurt with a teaspoon of honey.<br><br>
+            <strong>Dinner:</strong> 1-2 multigrain chapatis with paneer curry or tofu stir-fry.<br>
+            A bowl of vegetable soup or quinoa salad.<br><br>
+            <strong>Before Bed:</strong> A glass of warm milk with turmeric or cinnamon.`;
+            }
+            else if (goal.includes("muscle building")) {
+                return `
+            <strong>Diet Plan for Vegetarians (Muscle Building)</strong><br>
+            <strong>Early Morning:</strong> Warm water with lemon and a teaspoon of chia seeds.<br>
+            5 soaked almonds and 2 walnuts.<br><br>
+            <strong>Breakfast:</strong> High-protein smoothie with almond milk, oats, banana, peanut butter, and a scoop of plant-based protein powder.<br>
+            2 whole-grain toasts with avocado and pumpkin seeds.<br><br>
+            <strong>Mid-Morning Snack:</strong> A bowl of mixed nuts (cashews, almonds, walnuts) and dried fruits (apricots, dates).<br>
+            A glass of unsweetened coconut water.<br><br>
+            <strong>Lunch:</strong> 1-2 multigrain chapatis with chickpea curry or lentil stew.<br>
+            A bowl of quinoa or brown rice with roasted vegetables.<br>
+            A side salad with olive oil dressing.<br><br>
+            <strong>Evening Snack:</strong> A protein bar or energy balls made with dates, oats, and peanut butter.<br>
+            A cup of green tea or herbal tea.<br><br>
+            <strong>Dinner:</strong> 1-2 multigrain chapatis with a tofu stir-fry or paneer curry.<br>
+            A small bowl of vegetable soup or dal.<br><br>
+            <strong>Before Bed:</strong> A glass of warm milk with turmeric or a handful of seeds (sunflower, flax).`;
+            }
+            else if (goal.includes("clear skin")) {
+                return `
+                <strong>Diet Plan for Vegetarians (Clear Skin)</strong><br>
+                <strong>Early Morning:</strong> A glass of warm water with lemon to detoxify the body.<br>
+                5 soaked almonds or a tablespoon of chia seeds.<br><br>
+                <strong>Breakfast:</strong> A smoothie with spinach, kale, banana, berries, and almond milk.<br>
+                1-2 slices of whole-grain toast with avocado and chia seeds.<br>
+                A cup of green tea to fight oxidative stress.<br><br>
+                <strong>Mid-Morning Snack:</strong> A small bowl of mixed fruits (papaya, watermelon, or pomegranate).<br>
+                A handful of sunflower seeds or pumpkin seeds for zinc.<br><br>
+                <strong>Lunch:</strong> A quinoa salad with mixed greens, cucumbers, tomatoes, and olive oil dressing.<br>
+                A bowl of lentil soup or chickpea curry for protein.<br>
+                Steamed broccoli or spinach for a vitamin C boost.<br><br>
+                <strong>Evening Snack:</strong> A handful of mixed nuts (walnuts, almonds) rich in omega-3 fatty acids.<br>
+                A cup of herbal tea like chamomile or peppermint.<br><br>
+                <strong>Dinner:</strong> 1-2 multigrain chapatis with stir-fried vegetables or tofu curry.<br>
+                A side of steamed carrots and sweet potatoes for beta-carotene.<br>
+                A bowl of vegetable soup or lentil stew.<br><br>
+                <strong>Before Bed:</strong> A glass of warm milk with turmeric or cinnamon for its anti-inflammatory properties.`;
+            } else if (goal.includes("digestion")) {
+                return `
+                <strong>Diet Plan for Vegetarians (Digestion)</strong><br>
+                <strong>Early Morning:</strong> A glass of warm water with lemon and a pinch of cayenne pepper to boost metabolism.<br>
+                5 soaked almonds or a tablespoon of chia seeds.<br><br>
+                <strong>Breakfast:</strong> A smoothie made with spinach, kale, almond milk, flaxseeds, and a scoop of protein powder.<br>
+                A bowl of oatmeal with chia seeds, pumpkin seeds, and a handful of berries for antioxidants.<br><br>
+                <strong>Mid-Morning Snack:</strong> A small bowl of mixed fruits like grapefruit, watermelon, and berries (low in sugar and high in fiber).<br>
+                A handful of roasted sunflower seeds or pumpkin seeds for protein.<br><br>
+                <strong>Lunch:</strong> A quinoa salad with mixed greens, chickpeas, cucumbers, tomatoes, and a lemon-olive oil dressing.<br>
+                A side of steamed broccoli or a kale salad.<br>
+                1-2 multigrain chapatis or a small portion of brown rice.<br><br>
+                <strong>Evening Snack:</strong> A handful of roasted chickpeas or a small serving of Greek yogurt with chia seeds.<br>
+                A cup of green tea or herbal tea (peppermint or ginger) for digestion and fat burning.<br><br>
+                <strong>Dinner:</strong> A portion of grilled tofu or lentil stew with a side of roasted vegetables like zucchini, cauliflower, or carrots.<br>
+                A small serving of quinoa or steamed spinach.<br><br>
+                <strong>Before Bed:</strong> A glass of warm milk with a pinch of cinnamon or turmeric to reduce inflammation and aid digestion.`;
+            } else {
+                return "Sorry, I couldn't understand your request. Please try again with a clear goal (e.g., obesity, weight gain, strength, etc.).";
+            }
+        }
+    </script>
+
+
+<!-- <footer>
+        <p>&copy; 2024 BeYog</p>
+        <p>Address: Manipal University Jaipur, Rajasthan, India</p>
+        <p>Contact Us: <a href="mailto:tanyagoenka2207@gmail.com">contact@beyog.com</a></p>
+    </footer> -->
+
+
+
+</body>
+
+</html>

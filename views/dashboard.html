@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeYog - Home</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.ibb.co/GCtYd2n/yoga-background.jpg');
+            /* Add your background image URL here */
+            background-size: 100%;
+            background-position: center;
+            color: white;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(0, 121, 107, 0.8);
+            /* Added opacity for a transparent header */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            height: 50px;
+            width: 120px;
+            border-radius: 20%;
+            /* Circular logo */
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00796b;
+            text-decoration: wavy;
+        }
+
+        /* Main content */
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Enhanced Welcome Message Styling */
+        .welcome-message {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        /* Add a gradient background to the welcome message */
+        .welcome-background {
+            /* background: linear-gradient(to right, rgba(0, 121, 107, 0.7), rgba(0, 153, 136, 0.7)),
+                url('https://i.ibb.co/GCtYd2n/yoga-background.jpg'); */
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Heading styling */
+        .welcome-background h1 {
+            font-size: 48px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        /* Paragraph styling */
+        .welcome-background p {
+            font-size: 22px;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card Slider */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Instructor Info */
+        .instructors-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .instructor-card {
+            width: 22%;
+            background-color: white;
+            border-radius: 10px;
+            /* Rounded card */
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .instructor-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .instructor-card h3 {
+            color: #00796b;
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .instructor-card p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .instructor-card .contact-info {
+            color: #00796b;
+            font-size: 14px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Yoga Origin */
+        .origin-of-yoga {
+            position: relative;
+            background-image: url('https://wallpaperaccess.com/full/139118.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        /* Semi-transparent overlay for better text contrast */
+        .origin-of-yoga::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        /* Text styling */
+        .origin-of-yoga h1,
+        .origin-of-yoga h3,
+        .origin-of-yoga p {
+            position: relative;
+            z-index: 2;
+            /* Ensure text stays on top of the overlay */
+            color: white;
+            /* White text for better contrast */
+        }
+
+        .origin-of-yoga h1 {
+            color: #00796b;
+        }
+
+        .origin-of-yoga h3 {
+            color: #00796b;
+            box-shadow: #000000;
+            border-radius: 5%;
+        }
+
+        .origin-of-yoga p {
+            color: #f5f5f5;
+            /* Lighter color for readability */
+            line-height: 1.6;
+        }
+
+
+        /* Tribute Section */
+        .tribute-section {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .tribute-section h2 {
+            color: #00796b;
+        }
+
+        .tribute-section p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .tribute-section img {
+            width: 300px;
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .instructors-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .instructor-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Navbar -->
+    <header>
+        <a href="/dashboard"><img src="https://i.ibb.co/DwLj8bt/Picsart-24-12-11-17-56-04-309.png" alt="BeYog Logo"
+                class="logo"></a>
+        <!-- Add your logo image here -->
+        <nav>
+            <a href="/dashboard">Home</a>
+            <a href="/tutorials">Tutorials</a>
+            <a href="/dietplan">DietAI</a>
+            <a href="/membership">Membership</a>
+            <a href="/about">About Us</a>
+            <a href="/logout">Log Out</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Welcome Message Section -->
+        <div class="welcome-message">
+            <div class="welcome-background">
+                <h1 id="usernameDisplay"></h1>
+                <!-- Username will be displayed here -->
+                <p>Join our community and start your yoga journey today!</p>
+            </div>
+        </div>
+
+        <!-- Card Slider (Image Slider) -->
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+                <img src="https://i.ibb.co/g3PKWwk/slide1.jpg" alt="Yoga Image 1">
+                <img src="https://i.ibb.co/J7639xc/slide2.jpg" alt="Yoga Image 2">
+                <img src="https://i.ibb.co/7yDwn2d/slide3.jpg" alt="Yoga Image 3">
+                <img src="https://i.ibb.co/5Mr2Ghf/slide4.jpg" alt="Yoga Image 4">
+                <img src="https://i.ibb.co/3sGjGCW/slide5.jpg" alt="Yoga Image 5">
+            </div>
+        </div>
+
+        <!-- Instructor Info Section -->
+        <div class="instructors-section">
+            <div class="instructor-card">
+                <img src="https://via.placeholder.com/100" alt="Instructor 1">
+                <h3>Instructor 1</h3>
+                <p>Specializes in Hatha Yoga and Meditation</p>
+                <p>Contact: <span class="contact-info">instructor1@beyog.com</span></p>
+            </div>
+            <div class="instructor-card">
+                <img src="https://via.placeholder.com/100" alt="Instructor 2">
+                <h3>Instructor 2</h3>
+                <p>Specializes in Vinyasa Flow and Power Yoga</p>
+                <p>Contact: <span class="contact-info">instructor2@beyog.com</span></p>
+            </div>
+            <div class="instructor-card">
+                <img src="https://via.placeholder.com/100" alt="Instructor 3">
+                <h3>Instructor 3</h3>
+                <p>Specializes in Ashtanga Yoga and Pranayama</p>
+                <p>Contact: <span class="contact-info">instructor3@beyog.com</span></p>
+            </div>
+        </div>
+
+        <!-- Origin of Yoga Section -->
+        <div class="origin-of-yoga">
+            <h1>Origin of Yoga</h1>
+            <p>Yoga has ancient origins that can be traced back over 5,000 years, with roots in the Indus-Sarasvati
+                civilization (around 3300–1300 BCE) in the Indian subcontinent. The word "yoga" itself is derived from
+                the Sanskrit root "yuj," meaning "to unite" or "to join," symbolizing the union of the individual self
+                (Atman) with the universal consciousness (Brahman).</p>
+
+            <h3>Early Roots</h3>
+            <p><strong>1. Pre-Vedic Origins (Indus-Sarasvati Civilization):</strong> Archaeological evidence suggests
+                that the roots of yoga can be found in the spiritual practices of the Indus-Sarasvati civilization,
+                where figures resembling yogic postures have been found in ancient seals, notably the "Pashupati seal"
+                from the Harappan archaeological site of Mohenjo-daro. This image shows a figure seated in a
+                meditation-like posture, which some scholars interpret as an early depiction of a yogic practice.</p>
+
+            <p><strong>2. Vedic Period (1500–500 BCE):</strong> The earliest written references to yoga appear in the
+                <strong>Vedas</strong>, the sacred texts of Hinduism, which were composed during this period. The
+                Rigveda, one of the oldest Vedic texts, contains hymns that mention "yoking" or "binding," which may
+                metaphorically refer to spiritual discipline and union with the divine. However, the concept of yoga in
+                the Vedic period is more focused on ritual, sacrifice, and devotion to gods.
+            </p>
+
+            <h3>Classical Yoga and Philosophical Development</h3>
+            <p><strong>3. Upanishads (800–400 BCE):</strong> The concept of yoga evolves significantly during the
+                Upanishadic period, where it is seen as a means of achieving spiritual knowledge and liberation
+                (moksha). In the <strong>Upanishads</strong>, yoga is defined as a discipline that leads to the
+                realization of the ultimate truth. Meditation and introspection become central practices, and the idea
+                of the union between the individual soul (Atman) and the universal soul (Brahman) is emphasized.</p>
+
+            <p><strong>4. Bhagavad Gita (circa 2nd century BCE):</strong> One of the most important texts in the history
+                of yoga is the <strong>Bhagavad Gita</strong>, a 700-verse dialogue between the prince Arjuna and the
+                god Krishna. The Gita outlines different paths of yoga, such as <strong>Karma Yoga</strong> (yoga of
+                selfless action), <strong>Bhakti Yoga</strong> (yoga of devotion), and <strong>Jnana Yoga</strong> (yoga
+                of knowledge). The Gita's teachings have had a profound influence on the practice and philosophy of
+                yoga.</p>
+
+            <p><strong>5. Yoga Sutras of Patanjali (circa 2nd century CE):</strong> The formal systematization of yoga
+                is attributed to the sage <strong>Patanjali</strong> in his text, the <strong>Yoga Sutras</strong>. This
+                collection of 196 aphorisms outlines the path of yoga in a structured manner and is considered one of
+                the foundational texts of classical yoga. Patanjali's system focuses on the eight-limbed path of yoga
+                (Ashtanga Yoga), which includes ethical disciplines (Yamas and Niyamas), physical postures (Asanas),
+                breath control (Pranayama), sensory withdrawal (Pratyahara), concentration (Dharana), meditation
+                (Dhyana), and ultimately, enlightenment or samadhi (union with the divine).</p>
+
+            <h3>Development of Hatha Yoga</h3>
+            <p><strong>6. Hatha Yoga:</strong> Emerging around the 9th to 12th century CE, Hatha Yoga emphasizes
+                physical postures (Asanas), breathing exercises (Pranayama), and other techniques aimed at preparing the
+                body and mind for meditation. Hatha Yoga was designed to make the body strong and flexible, enabling it
+                to endure long periods of meditation. Key texts such as the <strong>Hatha Yoga Pradipika</strong> (15th
+                century CE) provide detailed instructions on physical practices and their connection to spiritual
+                growth.</p>
+
+            <h3>Modern Yoga</h3>
+            <p><strong>7. Modern Era:</strong> In the late 19th and early 20th centuries, yoga began to spread beyond
+                India. <strong>Swami Vivekananda</strong> introduced Indian philosophy and yoga to the West at the
+                Parliament of the World's Religions in Chicago in 1893, emphasizing the philosophical and spiritual
+                aspects of yoga. In the 20th century, influential teachers such as <strong>Tirumalai
+                    Krishnamacharya</strong>, <strong>Sri K. Pattabhi Jois</strong>, <strong>B.K.S. Iyengar</strong>,
+                and <strong>T. Krishnamacharya</strong> helped popularize yoga worldwide, with a focus on physical
+                postures (Asanas), breathing, and meditation.</p>
+
+            <p>Today, yoga has become a global phenomenon, practiced for both spiritual and physical well-being, with
+                various styles ranging from intense physical practices like <strong>Ashtanga</strong> and
+                <strong>Vinyasa</strong> to meditative forms like <strong>Restorative</strong> and <strong>Yin</strong>
+                yoga.
+            </p>
+
+            <p>In summary, yoga's origin is deeply intertwined with Indian spiritual traditions, and it evolved from
+                early ritualistic practices to a comprehensive system for physical, mental, and spiritual growth.</p>
+        </div>
+
+
+        <!-- Tribute to Yogi Shiva Maharishi Patanjali -->
+        <div class="tribute-section">
+            <h2>Tribute to Yogi Shiva Maharishi Patanjali</h2>
+            <img src="https://sannidhi.net/wp-content/uploads/2023/01/Patanjali_Jeevasamadi00-300x294.png"
+                alt="Yogi Shiva Maharishi Patanjali">
+            <p>Yogi Shiva Maharishi Patanjali is a revered sage and spiritual teacher in Indian philosophy, best known
+                for his foundational work, the *Yoga Sutras*, which systematize the practice of Yoga and offer profound
+                insights into the nature of the mind, consciousness, and spiritual liberation. Though the exact details
+                of his life remain shrouded in mystery, Patanjali is often regarded as a manifestation of Lord Shiva,
+                the ultimate yogi, symbolizing the union of divinity and wisdom. In addition to his contributions to
+                Yoga, Patanjali is also credited with writing the *Mahabhashya*, an influential commentary on Sanskrit
+                grammar, and his teachings are integral to various schools of thought in Indian philosophy, including
+                Vedanta and Samkhya. His holistic approach to spiritual practice, emphasizing ethical conduct, mental
+                discipline, and self-realization, has inspired millions worldwide, making him one of the most enduring
+                figures in the history of spiritual and philosophical thought. Patanjali’s teachings continue to guide
+                seekers on the path of self-mastery, inner peace, and liberation.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+        <footer>
+        <p>&copy; BeYog</p>
+        <p>Address: Manipal University Jaipur, Rajasthan, India</p>
+        <p>Contact Us: <a href="mailto:tanyagoenka2207@gmail.com">contact@beyog.com</a></p>
+    </footer>
+
+    <!-- JavaScript for Card Slider -->
+    <script>
+        // Retrieve the 'username' query parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username'); // Get 'username' from query string
+
+        if (username) {
+            // Use the username, e.g., display it on the page
+            document.getElementById('usernameDisplay').textContent = `Welcome, ${username}!`;
+        } else {
+            // Handle case where username is not provided (optional)
+            console.error('No username found in query parameters.');
+        }
+
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.slider img');
+        const totalImages = images.length;
+
+        function slideImages() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(slideImages, 3000); // Slide every 3 seconds
+    </script>
+
+</body>
+
+</html>

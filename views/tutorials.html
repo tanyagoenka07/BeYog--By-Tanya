@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Tutorials</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.ibb.co/GCtYd2n/yoga-background.jpg');
+            /* Add your background image URL here */
+            background-size: 100%;
+            background-position: center;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(0, 121, 107, 0.8);
+            /* Added opacity for a transparent header */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            height: 50px;
+            width: 120px;
+            border-radius: 20%;
+            /* Circular logo */
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00796b;
+            text-decoration: wavy;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Updated Categories Grid Styling */
+        .cat {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+            width: 100%;
+            height: 70vh;
+            margin: 20px 0px;
+        }
+
+        .containers {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .cat a {
+            padding: 40px;
+            /* Increased padding for larger clickable area */
+            /* Light green background */
+            border-radius: 20px;
+            /* Larger border radius for a smoother look */
+            font-size: 22px;
+            /* Increased font size */
+            font-weight: bold;
+            color: rgb(243, 227, 227);
+
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cat a:hover {
+            transform: translateY(-8px);
+            /* More lift effect on hover */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            /* Stronger shadow on hover */
+            background-color: #a8d9a8;
+            /* Slightly darker green for hover effect */
+            filter: blur(0.5px);
+        }
+
+        .row h2 {
+            background-color: #00796b;
+            padding: 20px;
+        }
+
+        #a1 {
+            background-image: url("https://i.ibb.co/f9gVMZ0/pexels-olly-3755761.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a2 {
+            background-image: url("https://i.ibb.co/rtrs6ZP/IMG-20241215-173030-992.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a3 {
+            background-image: url("https://i.ibb.co/2tBZHFd/IMG-20241215-173502-010.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a4 {
+            background-image: url("https://i.ibb.co/n7txnLP/IMG-20241215-173716-841.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a5 {
+            background-image: url("https://i.ibb.co/qpqQFhb/pexels-annushka-ahuja-7991910.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a6 {
+            background-image: url("https://i.ibb.co/fnF51bh/pexels-towfiqu-barbhuiya-3440682-11349880.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a7 {
+            background-image: url("https://i.ibb.co/wN0YjSz/IMG-20241215-174352-014.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a8 {
+            background-image: url("https://i.ibb.co/h9B7BKN/IMG-20241215-174725-080.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+        #a9 {
+            background-image: url("https://i.ibb.co/p4D5sVh/IMG-20241215-174918-493.jpg");
+            height: 50%;
+            background-position: center;
+        }
+
+
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+
+        .section {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* styling for pose content */
+
+        .pose {
+            margin-bottom: 40px;
+            text-align: center;
+            display: flex;
+            height: 20%;
+        }
+
+        img {
+            float: right;
+            width: 30;
+        }
+
+        p {
+            float: left;
+            width: 70%;
+        }
+
+        .pose img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .pose p {
+            font-size: 14px;
+            color: #333;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .cat a {
+                font-size: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navbar -->
+    <div class="container">
+        <header>
+            <a href="/dashboard" aria-label="Home">
+                <img src="https://i.ibb.co/DwLj8bt/Picsart-24-12-11-17-56-04-309.png" alt="BeYog Logo" class="logo">
+            </a>
+            <nav>
+                <a href="/dashboard">Home</a>
+                <a href="/tutorials">Tutorials</a>
+                <a href="/dietplan">DietAI</a>
+                <a href="/membership">Membership</a>
+                <a href="/about">About Us</a>
+                <a href="/logout">Log Out</a>
+            </nav>
+        </header>
+
+        <!-- Categories Section -->
+        <div class="cat">
+            <a id="a1" href="#section1">Stress, Anxiety, and Depression</a>
+            <a id="a2" href="#section2">Back Pain and Spine Issues</a>
+            <a id="a3" href="#section3">Hypertension (High Blood Pressure)</a>
+            <a id="a4" href="#section4">Digestive Issues</a>
+            <a id="a5" href="#section5">Obesity and Weight Management</a>
+            <a id="a6" href="#section6">Arthritis and Joint Pain</a>
+            <a id="a7" href="#section7">Insomnia and Sleep Disorders</a>
+            <a id="a8" href="#section8">Asthma and Respiratory Issues</a>
+            <a id="a9" href="#section9">Menstrual Cramps and PCOS</a>
+        </div>
+
+        <div class="row">
+            <div id="section1" class="section">
+                <h2>Stress, Anxiety, and Depression</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Child's Pose (Balasana):</strong>
+                    <ul>
+                        <li>by kneeling on the mat, with your knees apart and your big toes touching. Sit back on your
+                            heels, and then lower your forehead to the floor, extending your arms forward or resting
+                            them by your sides.</li>
+                        <li>Breathe deeply, allowing your body to relax and your back to stretch gently.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/KwcBMJk/Screenshot-2024-12-12-152620.png"
+                        alt="Screenshot-2024-12-12-152620" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Corpse Pose (Shavasana):</strong>
+                    <ul>
+                        <li>Lie flat on your back with your legs extended and arms at your sides, palms facing upward.
+                            Close your eyes and let your body completely relax.</li>
+                        <li>Focus on your breathing, taking slow, deep breaths, and let go of any tension in your body
+                        </li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/VCbD2hg/Screenshot-2024-12-12-152716.png" alt="Pose 2">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Cat-Cow Pose (Marjaryasana-Bitilasana):</strong>
+                    <ul>
+                        <li>Start on all fours, with your wrists directly under your shoulders and knees under your
+                            hips. Inhale as you arch your back (Cow), lifting your head and tailbone.</li>
+                        <li>Exhale as you round your back (Cat), tucking your chin and tailbone toward each other,
+                            stretching the spine.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/yWMrJ2d/Screenshot-2024-12-12-153123.png"
+                        alt="Screenshot-2024-12-12-153123" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Alternate Nostril Breathing (Nadi Shodhana Pranayama):</strong>
+                    <ul>
+                        <li>Sit comfortably with your spine straight. Use your right thumb to close your right nostril,
+                            inhale deeply through the left nostril.</li>
+                        <li>Close the left nostril with your right ring finger, then exhale through the right nostril.
+                            Repeat by inhaling through the right nostril and exhaling through the left.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/NFnSXyG/Screenshot-2024-12-15-152021.png"
+                        alt="Screenshot-2024-12-15-152021" border="0">
+                </div>
+            </div>
+
+            <div id="section2" class="section">
+                <h2>Back Pain and Spine Issues</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Downward Dog (Adho Mukha Svanasana):</strong>
+                    <ul>
+                        <li>Start on all fours with your hands shoulder-width apart and feet hip-width apart. Lift your
+                            hips toward the ceiling, keeping your back straight and legs extended.</li>
+                        <li>Press your heels toward the floor, and stretch your arms and legs, creating a V-shape with
+                            your body.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/vhvdLBT/Screenshot-2024-12-12-153536.png"
+                        alt="Screenshot-2024-12-12-153536" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Cobra Pose (Bhujangasana):</strong>
+                    <ul>
+                        <li>Lie flat on your stomach, with your legs extended and hands placed under your shoulders,
+                            elbows bent. Inhale as you press into your hands, lifting your chest off the floor.</li>
+                        <li>Keep your elbows close to your body and extend your spine, looking forward or slightly
+                            upward.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/DkKGRBH/Screenshot-2024-12-12-153613.png" alt="Pose 2">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Bridge Pose (Setu Bandhasana):</strong>
+                    <ul>
+                        <li>Lie on your back with your knees bent and feet flat on the floor, hip-width apart. Press
+                            your feet into the ground and lift your hips toward the ceiling.</li>
+                        <li>Keep your thighs parallel, and clasp your hands under your back, lifting your chest toward
+                            your chin.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/p1BHchP/Screenshot-2024-12-12-153647.png" alt="Pose 3">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Seated Forward Bend (Paschimottanasana):</strong>
+                    <ul>
+                        <li>Sit with your legs extended straight in front of you, keeping your back straight. Inhale and
+                            lengthen your spine.</li>
+                        <li>Exhale as you bend forward from your hips, reaching for your feet or shins, keeping your
+                            spine long and avoiding rounding your back.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/f9sm2z4/Screenshot-2024-12-12-153724.png"
+                        alt="Screenshot-2024-12-12-153724" border="0">
+                </div>
+            </div>
+
+            <div id="section3" class="section">
+                <h2>Hypertension (High Blood Pressure)</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Head-to-Knee Pose (Janu Sirsasana):</strong>
+                    <ul>
+                        <li>Sit with your legs extended. Bend your right knee, bringing the sole of your foot to your
+                            inner left thigh.</li>
+                        <li>Inhale, lengthen your spine, and exhale as you fold forward over your left leg, reaching
+                            your foot or shin.
+                        </li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/ygQ7HZk/Screenshot-2024-12-12-153901.png"
+                        alt="Screenshot-2024-12-12-153901" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Bound Angle Pose (Baddha Konasana):</strong>
+                    <ul>
+                        <li>Sit with your legs extended, then bend your knees and bring the soles of your feet together,
+                            letting your knees fall out to the sides.</li>
+                        <li>Hold your feet with your hands, sitting up tall with a straight back. Breathe deeply and
+                            gently press your knees toward the ground.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/VxTFdzj/Screenshot-2024-12-12-154007.png"
+                        alt="Screenshot-2024-12-12-154007" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Shoulder Stand (Sarvangasana):</strong>
+                    <ul>
+                        <li>Lie on your back, then lift your legs overhead, placing your hands on your lower back for
+                            support. Keep your legs straight and your body in a straight line.</li>
+                        <li>Balance on your shoulders and elbows, with your head off the floor. Hold the position and
+                            breathe deeply.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/M1L7nTt/Screenshot-2024-12-12-154217.png"
+                        alt="Screenshot-2024-12-12-154217" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Breathing Exercises (Anulom Vilom):</strong>
+                    <ul>
+                        <li>Sit comfortably, close your right nostril with your thumb, and inhale deeply through your
+                            left nostril. Close the left nostril with your ring finger.</li>
+                        <li>Open your right nostril and exhale slowly. Repeat this process, alternating nostrils.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/QdS21zd/Screenshot-2024-12-15-152156.png"
+                        alt="Screenshot-2024-12-15-152156" border="0">
+                </div>
+            </div>
+
+            <div id="section4" class="section">
+                <h2>Digestive Issues</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Wind-Relieving Pose (Pavanamuktasana):</strong>
+                    <ul>
+                        <li>Lie on your back and pull your knees toward your chest, wrapping your arms around them.
+                            Press your thighs into your abdomen.</li>
+                        <li>Gently rock back and forth to massage your digestive organs, and hold the position for a few
+                            breaths.
+                        </li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/09XvcpT/Screenshot-2024-12-12-154456.png"
+                        alt="Screenshot-2024-12-12-154456" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Seated Twist (Ardha Matsyendrasana):</strong>
+                    <ul>
+                        <li>Sit with your legs extended. Bend your right knee, placing your foot outside your left
+                            thigh. Inhale, lengthen your spine, and exhale as you twist your torso to the right.</li>
+                        <li>Place your left elbow on the outside of your right knee, and turn your head to look behind
+                            you, keeping your back straight.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/P5cnCDF/Screenshot-2024-12-12-154837.png"
+                        alt="Screenshot-2024-12-12-154837" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Bow Pose (Dhanurasana):</strong>
+                    <ul>
+                        <li>Lie on your stomach with your knees bent and feet close to your glutes. Reach back and hold
+                            your ankles with your hands.</li>
+                        <li>Inhale as you lift your chest and thighs off the floor, pulling your legs back, and arch
+                            your body into a bow shape.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/bgR42Yv/Screenshot-2024-12-15-151914.png"
+                        alt="Screenshot-2024-12-15-151914" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Cobra Pose (Bhujangasana):</strong>
+                    <ul>
+                        <li>Lie flat on your stomach, with your palms under your shoulders. Inhale as you lift your
+                            chest and head, straightening your arms and extending your spine.</li>
+                        <li>Keep your elbows slightly bent and avoid overextending your back.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/p441R6C/Screenshot-2024-12-12-155318.png"
+                        alt="Screenshot-2024-12-12-155318" border="0">
+                </div>
+            </div>
+
+            <div id="section5" class="section">
+                <h2>Obesity and Weight Management</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Sun Salutations (Surya Namaskar):</strong>
+                    <ul>
+                        <li>Start in Mountain Pose (Tadasana). Inhale, raise your arms, and exhale as you fold forward,
+                            bringing your hands to the floor.</li>
+                        <li>Step or jump back to a plank, then lower to the floor. Inhale, lift your chest into Cobra
+                            Pose, and exhale to Downward Dog. Repeat the sequence.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/NrV64g7/Screenshot-2024-12-12-155423.png"
+                        alt="Screenshot-2024-12-12-155423" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Warrior Pose (Virabhadrasana):</strong>
+                    <ul>
+                        <li>Start in a standing position with your feet wide apart. Turn your right foot out 90 degrees,
+                            and bend your right knee, keeping your left leg straight.</li>
+                        <li>Extend your arms parallel to the floor, palms facing down. Keep your torso upright and gaze
+                            forward.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/7bMG6mF/Screenshot-2024-12-12-155533.png"
+                        alt="Screenshot-2024-12-12-155533" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Boat Pose (Navasana):</strong>
+                    <ul>
+                        <li>Sit with your legs extended. Lean back slightly, lift your legs off the floor, and balance
+                            on your sit bones.</li>
+                        <li>Hold your shins or extend your arms forward, keeping your body in a V-shape. Engage your
+                            core to maintain balance.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/X7QXM1K/Screenshot-2024-12-12-155559.png"
+                        alt="Screenshot-2024-12-12-155559" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Plank Pose (Phalakasana):</strong>
+                    <ul>
+                        <li>Start in a push-up position with your wrists directly under your shoulders and your body in
+                            a straight line.</li>
+                        <li>Engage your core and legs to keep your body aligned. Hold the position, keeping your head,
+                            neck, and spine in one line.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/DRbFK5z/Screenshot-2024-12-12-155650.png"
+                        alt="Screenshot-2024-12-12-155650" border="0">
+                </div>
+            </div>
+
+            <div id="section6" class="section">
+                <h2>Arthritis and Joint Pain</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Tree Pose (Vrikshasana):</strong>
+                    <ul>
+                        <li>Stand tall and shift your weight onto your left leg. Place the sole of your right foot on
+                            your left inner thigh or calf (avoid the knee).</li>
+                        <li>Bring your palms together in front of your chest or extend your arms overhead, keeping your
+                            balance.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/mTf4GJ0/Screenshot-2024-12-12-155741.png"
+                        alt="Screenshot-2024-12-12-155741" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Hero Pose (Virasana):</strong>
+                    <ul>
+                        <li>Kneel on the floor with your knees together and feet slightly apart. Sit between your feet,
+                            keeping your back straight.</li>
+                        <li>Rest your hands on your knees and hold the position while breathing deeply.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/zVmVzjj/Screenshot-2024-12-12-155804.png"
+                        alt="Screenshot-2024-12-12-155804" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Extended Triangle Pose (Utthita Trikonasana):</strong>
+                    <ul>
+                        <li>Stand with your legs wide apart. Turn your right foot out 90 degrees, and extend your arms
+                            to shoulder height.</li>
+                        <li>Hinge at your hips and lower your right hand to your shin or the floor, while your left arm
+                            extends toward the ceiling.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/bHwKG7D/Screenshot-2024-12-12-160008.png"
+                        alt="Screenshot-2024-12-12-160008" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Chair Pose (Utkatasana):</strong>
+                    <ul>
+                        <li>Stand with your feet together and raise your arms overhead. Bend your knees as if you’re
+                            sitting in a chair, keeping your weight in your heels.</li>
+                        <li>Hold the position with your chest lifted and thighs parallel to the floor.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/XJg3vsh/Screenshot-2024-12-12-160053.png"
+                        alt="Screenshot-2024-12-12-160053" border="0">
+                </div>
+            </div>
+
+            <div id="section7" class="section">
+                <h2> Insomnia and Sleep Disorders</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Legs-Up-the-Wall Pose (Viparita Karani):</strong>
+                    <ul>
+                        <li>Sit sideways next to a wall, then lie on your back and swing your legs up the wall, keeping
+                            them straight. Adjust so your hips are close to the wall.</li>
+                        <li>Rest your arms at your sides and focus on slow, deep breathing. Hold for several minutes.
+                        </li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/M1L7nTt/Screenshot-2024-12-12-154217.png"
+                        alt="Screenshot-2024-12-12-154217" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Reclining Bound Angle Pose (Supta Baddha Konasana):</strong>
+                    <ul>
+                        <li>Lie on your back and bring the soles of your feet together, letting your knees drop open to
+                            the sides. Use cushions under your knees for support if needed.</li>
+                        <li>Rest your arms by your sides, palms facing upward, and take deep breaths to relax.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/26MfLVr/Screenshot-2024-12-12-160533.png"
+                        alt="Screenshot-2024-12-12-160533" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Child’s Pose (Balasana):</strong>
+                    <ul>
+                        <li>Kneel on the floor and sit back on your heels. Stretch your arms forward, lowering your
+                            forehead to the floor.</li>
+                        <li>Breathe deeply, allowing your body to relax completely.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/KwcBMJk/Screenshot-2024-12-12-152620.png"
+                        alt="Screenshot-2024-12-12-152620" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Yoga Nidra (Yogic Sleep):</strong>
+                    <ul>
+                        <li>Lie on your back in Shavasana. Close your eyes and follow guided instructions (if available)
+                            or mentally scan your body for tension, consciously relaxing each part.</li>
+                        <li>Focus on your breathing and remain in a meditative state for 10-20 minutes.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/3Rtc9LW/Screenshot-2024-12-12-160727.png"
+                        alt="Screenshot-2024-12-12-160727" border="0">
+                </div>
+            </div>
+
+            <div id="section8" class="section">
+                <h2> Asthma and Respiratory Issues</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Fish Pose (Matsyasana):</strong>
+                    <ul>
+                        <li>Lie on your back, then lift your chest by propping yourself on your elbows. Allow your head
+                            to gently drop back, creating a deep arch in your upper back.</li>
+                        <li>Rest the crown of your head lightly on the floor and breathe deeply.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/550mmnR/Screenshot-2024-12-12-160837.png"
+                        alt="Screenshot-2024-12-12-160837" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Bridge Pose (Setu Bandhasana):</strong>
+                    <ul>
+                        <li>Lie on your back with your knees bent and feet hip-width apart. Press your feet into the
+                            ground and lift your hips, forming a bridge shape.</li>
+                        <li>Clasp your hands under your back or keep them flat, opening your chest for deeper breathing.
+                        </li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/qmKS635/Screenshot-2024-12-12-160929.png"
+                        alt="Screenshot-2024-12-12-160929" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Cobra Pose (Bhujangasana):</strong>
+                    <ul>
+                        <li>Lie on your stomach and place your hands under your shoulders. Inhale and lift your chest
+                            while keeping your elbows slightly bent.</li>
+                        <li>Expand your chest as you breathe deeply, keeping your shoulders away from your ears.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/p441R6C/Screenshot-2024-12-12-155318.png"
+                        alt="Screenshot-2024-12-12-155318" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Breathing Practices (Pranayama):</strong>
+                    <ul>
+                        <li>For Kapalbhati, sit comfortably and exhale forcefully through your nose while pulling your
+                            abdomen inward. Repeat in quick, rhythmic breaths.</li>
+                        <li>For Bhastrika, inhale and exhale rapidly and forcefully through both nostrils, expanding and
+                            contracting your chest with each breath.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/d7jW0pk/Screenshot-2024-12-12-161221.png"
+                        alt="Screenshot-2024-12-12-161221" border="0">
+                </div>
+            </div>
+
+            <div id="section9" class="section">
+                <h2>Menstrual Cramps and PCOS</h2>
+                <div class="pose">
+                    <p>
+                        <strong>Reclining Bound Angle Pose (Supta Baddha Konasana):</strong>
+                    <ul>
+                        <li>Lie on your back, bring the soles of your feet together, and allow your knees to drop open.
+                            Support your knees with pillows if needed.</li>
+                        <li>Rest your hands on your belly or by your sides, focusing on slow, deep breaths.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/VxTFdzj/Screenshot-2024-12-12-154007.png"
+                        alt="Screenshot-2024-12-12-154007" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Child’s Pose (Balasana):</strong>
+                    <ul>
+                        <li>Kneel on the floor and sit back on your heels. Stretch your arms forward, lowering your
+                            forehead to the floor.</li>
+                        <li>Breathe deeply, allowing your body to relax completely.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/KwcBMJk/Screenshot-2024-12-12-152620.png"
+                        alt="Screenshot-2024-12-12-152620" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Cobra Pose (Bhujangasana):</strong>
+                    <ul>
+                        <li>Lie on your stomach and place your hands under your shoulders. Inhale as you lift your upper
+                            body, opening your chest and stretching your abdomen.</li>
+                        <li>Avoid straining your lower back by keeping the lift gentle.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/p441R6C/Screenshot-2024-12-12-155318.png"
+                        alt="Screenshot-2024-12-12-155318" border="0">
+                </div>
+                <div class="pose">
+                    <p>
+                        <strong>Butterfly Pose (Baddha Konasana):</strong>
+                    <ul>
+                        <li>Sit with your legs bent and the soles of your feet together. Hold your feet with your hands
+                            and let your knees drop toward the floor.</li>
+                        <li>Sit up straight and gently flap your legs up and down like butterfly wings or hold the
+                            position while breathing deeply.</li>
+                    </ul>
+                    </p>
+                    <img src="https://i.ibb.co/TT95bjP/Screenshot-2024-12-12-161925.png"
+                        alt="Screenshot-2024-12-12-161925" border="0">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Yoga Tutorials page loaded!');
+        });
+    </script>
+</body>
+
+</html>
